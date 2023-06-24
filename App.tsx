@@ -1,5 +1,5 @@
 import { StatusBar } from 'react-native';
-import { Todo } from './src/components/Todo';
+import { Todo } from './src/screens/Todo';
 
 export default function App() {
   return (
