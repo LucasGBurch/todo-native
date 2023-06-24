@@ -11,8 +11,10 @@ export function Todo() {
       <View style={styles.headerView}>
         <Image resizeMode='cover' source={logoImg} />
       </View>
-      <NewTodo />
-      <TodoList />
+      <View style={styles.mainView}>
+        <NewTodo />
+        <TodoList />
+      </View>
     </View>
   );
 }
