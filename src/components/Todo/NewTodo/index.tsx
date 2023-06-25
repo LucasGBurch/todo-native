@@ -1,5 +1,6 @@
-import { TextInput, TouchableOpacity, View, Text } from 'react-native';
+import { TextInput, View, Text, Image, TouchableHighlight } from 'react-native';
 import { styles } from './styles';
+import plusCircle from '../../../../assets/PlusCircle.png';
 
 export function NewTodo() {
   return (
@@ -11,11 +12,13 @@ export function NewTodo() {
         keyboardType='default'
       />
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableHighlight activeOpacity={0.85} style={styles.button} underlayColor={'#4EA8DE'}>
         <View style={styles.buttonCircle}>
-          <Text style={styles.buttonText}>+</Text>
+          <Text style={styles.buttonText}>
+            <Image source={plusCircle} />
+          </Text>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     </View>
   );
 }

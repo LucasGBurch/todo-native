@@ -45,5 +45,8 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: '#F2F2F2',
     fontSize: 18,
+    height: 18,
+
+    
   },
 });

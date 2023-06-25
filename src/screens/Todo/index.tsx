@@ -4,8 +4,13 @@ import logoImg from '../../../assets/LogoTodo.png';
 
 import { NewTodo } from '../../components/Todo/NewTodo';
 import { TodoList } from '../../components/Todo/TodoList';
+import { useState } from 'react';
+import { TodoModel } from '../../models';
 
 export function Todo() {
+
+  const [todo, setTodo] = useState<TodoModel[]>([]);
+
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
@@ -13,7 +18,7 @@ export function Todo() {
       </View>
       <View style={styles.mainView}>
         <NewTodo />
-        <TodoList />
+        <TodoList todo={todo} />
       </View>
     </View>
   );
