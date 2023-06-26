@@ -24,6 +24,12 @@ export const styles = StyleSheet.create({
     width: 327,
   },
 
+  focusedInput: {
+    borderColor: '#5E60CE',
+    borderStyle: 'solid',
+    borderWidth: 1
+  },
+
   button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -33,20 +39,18 @@ export const styles = StyleSheet.create({
     width: 52,
   },
 
-  buttonCircle: {
-    backgroundColor: '#1E6F9F',
-    borderColor: '#F2F2F2',
-    borderStyle: 'solid',
-    borderRadius: 1000,
-    height: 18,
-    width: 18,
+  buttonHover: {
+    backgroundColor: '#4EA8DE',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 6,
+    height: 52,
+    width: 52,
   },
 
   buttonText: {
     color: '#F2F2F2',
     fontSize: 18,
     height: 18,
-
-    
   },
 });
