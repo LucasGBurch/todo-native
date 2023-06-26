@@ -1,15 +1,28 @@
 import { FlatList, Image, Text, View } from 'react-native';
 import { ListItem } from './ListItem';
 import { TodoModel } from '../../../models';
+import { useState } from 'react';
 
 import imgEmptyList from '../../../../assets/EmptyClipboard.png';
 import { styles } from './styles';
 
 interface TodoListProps {
-  todo: TodoModel[];
+  item: TodoModel[];
+  completedTodos: number;
+  deleteTodo: (id: string) => void;
+  updateTodo: (id: string, concluded: boolean) => void;
 }
 
-export function TodoList({ todo }: TodoListProps) {
+export function TodoList({
+  item,
+  completedTodos,
+  deleteTodo,
+  updateTodo,
+}: TodoListProps) {
+  const [todo, setTodos] = useState<TodoModel[]>([
+    { id: '1', title: 'Tarefa', checked: false },
+  ]);
+
   return (
     <View style={styles.container}>
       <View style={styles.todoStats}>
@@ -25,7 +38,14 @@ export function TodoList({ todo }: TodoListProps) {
       </View>
       <FlatList
         data={todo}
-        renderItem={(item) => <ListItem />}
+        renderItem={({ item }) => (
+          <ListItem
+            key={item.id}
+            item={item}
+            onDeleteTodo={deleteTodo}
+            onUpdateTodo={updateTodo}
+          />
+        )}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
           <View style={styles.emptyList}>
