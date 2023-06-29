@@ -11,14 +11,26 @@ export function Todo() {
 
   const [todo, setTodo] = useState<TodoModel[]>([]);
 
+  function createTodoHandler() {
+
+  }
+
+  function deleteTodoHandler() {
+
+  }
+
+  function updateTodoHandler() {
+    
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
         <Image resizeMode='cover' source={logoImg} />
       </View>
       <View style={styles.mainView}>
-        <NewTodo />
-        <TodoList todo={todo} />
+        <NewTodo createTodo={createTodoHandler} />
+        <TodoList item={todo} deleteTodo={deleteTodoHandler} updateTodo={updateTodoHandler} />
       </View>
     </View>
   );

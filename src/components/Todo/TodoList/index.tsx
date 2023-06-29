@@ -8,20 +8,20 @@ import { styles } from './styles';
 
 interface TodoListProps {
   item: TodoModel[];
-  completedTodos: number;
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, concluded: boolean) => void;
 }
 
 export function TodoList({
   item,
-  completedTodos,
   deleteTodo,
   updateTodo,
 }: TodoListProps) {
   const [todo, setTodos] = useState<TodoModel[]>([
-    { id: '1', title: 'Tarefa', checked: false },
+    { id: '1', title: 'Tarefa para testar o estado e como o texto se acomoda aqui', checked: false },
   ]);
+
+  // REVISAR ESTILOS TODO DONE ABAIXO E NOS STYLES.TS
 
   return (
     <View style={styles.container}>

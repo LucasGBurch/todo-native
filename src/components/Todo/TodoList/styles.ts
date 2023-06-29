@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
   },
 
   todoStats: {
+    borderBottomColor: '#808080',
+    borderBottomWidth: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
