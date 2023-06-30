@@ -1,7 +1,6 @@
 import { FlatList, Image, Text, View } from 'react-native';
 import { ListItem } from './ListItem';
 import { TodoModel } from '../../../models';
-import { useState } from 'react';
 
 import imgEmptyList from '../../../../assets/EmptyClipboard.png';
 import { styles } from './styles';
@@ -17,9 +16,6 @@ export function TodoList({
   deleteTodo,
   updateTodo,
 }: TodoListProps) {
-  const [todo, setTodos] = useState<TodoModel[]>([
-    { id: '1', title: 'Tarefa para testar o estado e como o texto se acomoda aqui', checked: false },
-  ]);
 
   // REVISAR ESTILOS TODO DONE ABAIXO E NOS STYLES.TS
 
@@ -37,7 +33,7 @@ export function TodoList({
         </View>
       </View>
       <FlatList
-        data={todo}
+        data={item}
         renderItem={({ item }) => (
           <ListItem
             key={item.id}

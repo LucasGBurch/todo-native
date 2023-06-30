@@ -3,8 +3,9 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: '#262626',
-    padding: 12,
-    paddingRight: 8,
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingLeft: 12,
 
     flexDirection: 'row',
     alignItems: 'center',
@@ -21,10 +22,10 @@ export const styles = StyleSheet.create({
 
   thrashButton: {
     borderRadius: 6,
+    padding: 6,
   },
 
   thrashButtonHover: {
     backgroundColor: '#333333',
-    tintColor: '#E25858',
   },
 });

@@ -14,11 +14,12 @@ interface ListItemProps {
 
 export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
-  const [checkboxHover, setCheckboxHover] = useState<boolean>(false);
+  const [checkboxClicked, setCheckboxClicked] = useState<boolean>(false);
   const [trashButtonHover, setTrashButtonHover] = useState<boolean>(false);
 
   function handleCheckIsCompleted() {
     setIsCompleted((state) => !state);
+    setCheckboxClicked((state) => !state)
     onUpdateTodo(item.id, isCompleted);
   }
 
@@ -35,12 +36,9 @@ export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
   return (
     <View style={styles.container}>
       <BouncyCheckbox
-        size={24}
-        fillColor='#5E60CE'
+        size={20}
+        fillColor={`${checkboxClicked ? '#5E60CE' : '#4EA8DE'}`}
         unfillColor='transparent'
-        iconStyle={{borderColor: '#4EA8DE'}}
-        onPressIn={() => setCheckboxHover(true)}
-        onPressOut={() => setCheckboxHover(false)}
         onPress={handleCheckIsCompleted}
       />
       <Text style={styles.todoTitle}>{item.title}</Text>
@@ -51,7 +49,7 @@ export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
         onPressOut={() => setTrashButtonHover(false)}
         onPress={handleDeleteTodo}
       >
-        <Trash size={24} />
+        <Trash size={24} color={`${trashButtonHover ? '#E25858' : '#808080'}`} />
       </TouchableOpacity>
     </View>
   );

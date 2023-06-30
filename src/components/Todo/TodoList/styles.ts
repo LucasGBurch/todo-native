@@ -10,11 +10,11 @@ export const styles = StyleSheet.create({
   },
 
   todoStats: {
-    borderBottomColor: '#808080',
-    borderBottomWidth: 8,
+    borderBottomColor: '#333333',
+    borderBottomWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    paddingBottom: 20,
     width: 327,
   },
 

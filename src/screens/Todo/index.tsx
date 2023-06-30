@@ -8,20 +8,19 @@ import { useState } from 'react';
 import { TodoModel } from '../../models';
 
 export function Todo() {
+  const [todo, setTodos] = useState<TodoModel[]>([
+    {
+      id: '1',
+      title: 'Tarefa para testar o estado e como o texto se acomoda aqui',
+      checked: false,
+    },
+  ]);
 
-  const [todo, setTodo] = useState<TodoModel[]>([]);
+  function createTodoHandler() {}
 
-  function createTodoHandler() {
+  function deleteTodoHandler() {}
 
-  }
-
-  function deleteTodoHandler() {
-
-  }
-
-  function updateTodoHandler() {
-    
-  }
+  function updateTodoHandler() {}
 
   return (
     <View style={styles.container}>
@@ -30,7 +29,11 @@ export function Todo() {
       </View>
       <View style={styles.mainView}>
         <NewTodo createTodo={createTodoHandler} />
-        <TodoList item={todo} deleteTodo={deleteTodoHandler} updateTodo={updateTodoHandler} />
+        <TodoList
+          item={todo}
+          deleteTodo={deleteTodoHandler}
+          updateTodo={updateTodoHandler}
+        />
       </View>
     </View>
   );
