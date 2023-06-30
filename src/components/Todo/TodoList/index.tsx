@@ -7,8 +7,8 @@ import { styles } from './styles';
 
 interface TodoListProps {
   item: TodoModel[];
-  deleteTodo: (id: string) => void;
-  updateTodo: (id: string, concluded: boolean) => void;
+  deleteTodo: (id: number) => void;
+  updateTodo: (id: number, concluded: boolean) => void;
 }
 
 export function TodoList({ item, deleteTodo, updateTodo }: TodoListProps) {

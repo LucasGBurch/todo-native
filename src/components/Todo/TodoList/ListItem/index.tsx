@@ -8,8 +8,8 @@ import { Trash } from 'phosphor-react-native';
 
 interface ListItemProps {
   item: TodoModel;
-  onDeleteTodo: (id: string) => void;
-  onUpdateTodo: (id: string, completed: boolean) => void;
+  onDeleteTodo: (id: number) => void;
+  onUpdateTodo: (id: number, completed: boolean) => void;
 }
 
 export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
