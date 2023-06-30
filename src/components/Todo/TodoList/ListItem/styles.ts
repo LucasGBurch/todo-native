@@ -14,14 +14,20 @@ export const styles = StyleSheet.create({
 
   todoTitle: {
     color: '#F2F2F2',
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 20,
     textAlign: 'left',
     width: 235,
   },
 
+  todoTitleDone: {
+    color: '#808080',
+    textDecorationLine: 'line-through',
+  },
+
   thrashButton: {
     borderRadius: 6,
+    marginLeft: 4,
     padding: 6,
   },
 

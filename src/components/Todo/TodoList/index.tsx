@@ -11,12 +11,7 @@ interface TodoListProps {
   updateTodo: (id: string, concluded: boolean) => void;
 }
 
-export function TodoList({
-  item,
-  deleteTodo,
-  updateTodo,
-}: TodoListProps) {
-
+export function TodoList({ item, deleteTodo, updateTodo }: TodoListProps) {
   // REVISAR ESTILOS TODO DONE ABAIXO E NOS STYLES.TS
 
   return (
@@ -28,8 +23,11 @@ export function TodoList({
             <Text style={styles.todoMadeNumber}>99</Text>
           </View>
         </View>
-        <View>
+        <View style={styles.todoDoneContainer}>
           <Text style={styles.todoDoneText}>Concluídas</Text>
+          <View style={styles.todoDoneNumberContainer}>
+            <Text style={styles.todoDoneNumber}>99</Text>
+          </View>
         </View>
       </View>
       <FlatList

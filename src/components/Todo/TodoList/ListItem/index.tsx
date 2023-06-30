@@ -27,7 +27,7 @@ export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
     onDeleteTodo(item.id);
   }
 
-  const todoStatus = isCompleted ? [] : [];
+  const todoStatus = isCompleted ? [styles.todoTitle, styles.todoTitleDone] : [styles.todoTitle];
 
   const trashStyle = trashButtonHover
     ? [styles.thrashButtonHover, styles.thrashButton]
@@ -41,7 +41,7 @@ export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
         unfillColor='transparent'
         onPress={handleCheckIsCompleted}
       />
-      <Text style={styles.todoTitle}>{item.title}</Text>
+      <Text style={todoStatus}>{item.title}</Text>
       <TouchableOpacity
         activeOpacity={0.85}
         style={trashStyle}

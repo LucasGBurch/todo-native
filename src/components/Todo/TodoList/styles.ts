@@ -10,8 +10,6 @@ export const styles = StyleSheet.create({
   },
 
   todoStats: {
-    borderBottomColor: '#333333',
-    borderBottomWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 20,
@@ -20,12 +18,13 @@ export const styles = StyleSheet.create({
 
   todoMadeContainer: {
     flexDirection: 'row',
+    width: 86,
   },
 
   todoMadeText: {
     color: '#4EA8DE',
     fontWeight: 'bold',
-    marginRight: 8
+    marginRight: 8,
   },
 
   todoMadeNumberContainer: {
@@ -41,16 +40,39 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  todoDoneContainer: {
+    flexDirection: 'row',
+    width: 110,
+  },
+
   todoDoneText: {
     color: '#8284FA',
+    fontWeight: 'bold',
+    marginRight: 8,
+  },
+
+  todoDoneNumberContainer: {
+    alignItems: 'center',
+    backgroundColor: '#333333',
+    borderRadius: 1000,
+    height: 19,
+    width: 25,
+  },
+
+  todoDoneNumber: {
+    color: '#D9D9D9',
     fontWeight: 'bold',
   },
 
   emptyList: {
-    alignItems: 'center'
+    borderTopColor: '#333333',
+    borderTopWidth: 1,
+    alignItems: 'center',
+    width: 327,
   },
 
   emptyListImg: {
+    marginTop: 48,
     marginBottom: 16,
   },
 
@@ -63,5 +85,3 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-// borderBottomColor: #262626
