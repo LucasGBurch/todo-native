@@ -7,10 +7,22 @@ import { styles } from './styles';
 
 interface TodoListProps {
   item: TodoModel[];
+  todosCompleted: number;
   deleteTodo: (title: string) => void;
+  updateTodo: (title: string, completed: boolean) => void;
 }
 
-export function TodoList({ item, deleteTodo }: TodoListProps) {
+export function TodoList({
+  item,
+  todosCompleted,
+  deleteTodo,
+  updateTodo,
+}: TodoListProps) {
+
+  const totalTodos = item.length;
+  const haveTodos = totalTodos > 0;
+
+  const completedTodosField = haveTodos && (todosCompleted <= totalTodos) ? todosCompleted : totalTodos;
 
   return (
     <View style={styles.container}>
@@ -18,13 +30,13 @@ export function TodoList({ item, deleteTodo }: TodoListProps) {
         <View style={styles.todoMadeContainer}>
           <Text style={styles.todoMadeText}>Criadas</Text>
           <View style={styles.todoMadeNumberContainer}>
-            <Text style={styles.todoMadeNumber}>99</Text>
+            <Text style={styles.todoMadeNumber}>{totalTodos}</Text>
           </View>
         </View>
         <View style={styles.todoDoneContainer}>
           <Text style={styles.todoDoneText}>Concluídas</Text>
           <View style={styles.todoDoneNumberContainer}>
-            <Text style={styles.todoDoneNumber}>99</Text>
+            <Text style={styles.todoDoneNumber}>{completedTodosField}</Text>
           </View>
         </View>
       </View>
@@ -35,6 +47,7 @@ export function TodoList({ item, deleteTodo }: TodoListProps) {
             key={item.title}
             item={item}
             onDeleteTodo={deleteTodo}
+            onUpdateTodo={updateTodo}
           />
         )}
         showsVerticalScrollIndicator={false}

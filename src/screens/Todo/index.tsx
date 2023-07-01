@@ -8,10 +8,13 @@ import { useState } from 'react';
 import { TodoModel } from '../../models';
 
 export function Todo() {
-  const [todo, setTodos] = useState<TodoModel[]>([]);
+  const [todos, setTodos] = useState<TodoModel[]>([]);
+  const [completedTodos, setCompletedTodos] = useState<number>(0);
+
+  
 
   function todoIsNotValid(title: string) {
-    const exists = todo.find((todo) => todo.title === title);
+    const exists = todos.find((todo) => todo.title === title);
     const haveLength = title.length > 2;
     return exists || !haveLength;
   }
@@ -36,14 +39,29 @@ export function Todo() {
     });
   }
 
+  function todoDeleter(title: string) {
+    const todoToBeDeleted = todos.filter((todo) => {
+      return todo.title === title;
+    });
+
+    const todosWithoutDeletedOne = todos.filter((todo) => {
+      return todo.title !== title;
+    });
+
+    if (todoToBeDeleted[0].checked) {
+      setCompletedTodos((prevState) => {
+        return prevState - 1;
+      });
+    }
+
+    setTodos(todosWithoutDeletedOne);
+  }
+
   function deleteTodoHandler(title: string) {
     Alert.alert('Deletar', `Deletar a tarefa número ${title}?`, [
       {
         text: 'Sim',
-        onPress: () =>
-          setTodos((prevTodos) =>
-            prevTodos.filter((todos) => todos.title !== title)
-          ),
+        onPress: () => todoDeleter(title),
         style: 'destructive',
       },
       {
@@ -53,7 +71,23 @@ export function Todo() {
     ]);
   }
 
-  // function updateTodoHandler() {} // para quando este dado fosse necessário, tipo em API
+  function updateTodoHandler(title: string, completed: boolean) {
+    const updatedTodo = todos.filter((todo) => {
+      return todo.title === title;
+    });
+
+    updatedTodo[0].checked = !completed;
+
+    if (updatedTodo[0].checked) {
+      setCompletedTodos((prevState) => {
+        return prevState + 1;
+      });
+    } else {
+      setCompletedTodos((prevState) => {
+        return prevState - 1;
+      });
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -62,7 +96,12 @@ export function Todo() {
       </View>
       <View style={styles.mainView}>
         <NewTodo createTodo={createTodoHandler} />
-        <TodoList item={todo} deleteTodo={deleteTodoHandler} />
+        <TodoList
+          item={todos}
+          deleteTodo={deleteTodoHandler}
+          todosCompleted={completedTodos}
+          updateTodo={updateTodoHandler}
+        />
       </View>
     </View>
   );
