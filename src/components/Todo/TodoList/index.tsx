@@ -7,12 +7,10 @@ import { styles } from './styles';
 
 interface TodoListProps {
   item: TodoModel[];
-  deleteTodo: (id: number) => void;
-  updateTodo: (id: number, concluded: boolean) => void;
+  deleteTodo: (title: string) => void;
 }
 
-export function TodoList({ item, deleteTodo, updateTodo }: TodoListProps) {
-  // REVISAR ESTILOS TODO DONE ABAIXO E NOS STYLES.TS
+export function TodoList({ item, deleteTodo }: TodoListProps) {
 
   return (
     <View style={styles.container}>
@@ -34,10 +32,9 @@ export function TodoList({ item, deleteTodo, updateTodo }: TodoListProps) {
         data={item}
         renderItem={({ item }) => (
           <ListItem
-            key={item.id}
+            key={item.title}
             item={item}
             onDeleteTodo={deleteTodo}
-            onUpdateTodo={updateTodo}
           />
         )}
         showsVerticalScrollIndicator={false}

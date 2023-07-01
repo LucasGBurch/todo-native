@@ -8,11 +8,10 @@ import { Trash } from 'phosphor-react-native';
 
 interface ListItemProps {
   item: TodoModel;
-  onDeleteTodo: (id: number) => void;
-  onUpdateTodo: (id: number, completed: boolean) => void;
+  onDeleteTodo: (title: string) => void;
 }
 
-export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
+export function ListItem({ item, onDeleteTodo }: ListItemProps) {
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [checkboxClicked, setCheckboxClicked] = useState<boolean>(false);
   const [trashButtonHover, setTrashButtonHover] = useState<boolean>(false);
@@ -20,11 +19,11 @@ export function ListItem({ item, onDeleteTodo, onUpdateTodo }: ListItemProps) {
   function handleCheckIsCompleted() {
     setIsCompleted((state) => !state);
     setCheckboxClicked((state) => !state)
-    onUpdateTodo(item.id, isCompleted);
+    // onUpdateTodo(item.id, isCompleted); esta Props só seria necessária se o estado completed fosse necessário lá em Todo para uma API ou algo do tipo
   }
 
   function handleDeleteTodo() {
-    onDeleteTodo(item.id);
+    onDeleteTodo(item.title);
   }
 
   const todoStatus = isCompleted ? [styles.todoTitle, styles.todoTitleDone] : [styles.todoTitle];

@@ -8,13 +8,7 @@ import { useState } from 'react';
 import { TodoModel } from '../../models';
 
 export function Todo() {
-  const [todo, setTodos] = useState<TodoModel[]>([
-    {
-      id: 1,
-      title: 'Tarefa para testar o estado e como o texto se acomoda aqui',
-      checked: false,
-    },
-  ]);
+  const [todo, setTodos] = useState<TodoModel[]>([]);
 
   function todoIsNotValid(title: string) {
     const exists = todo.find((todo) => todo.title === title);
@@ -30,22 +24,36 @@ export function Todo() {
       );
     }
 
-    // Se tiver id, soma 1; senão, vai ser o 1
-    const id = todo ? todo.slice(-1)[0].id++ : 1;
+    setTodos((prevTodos) => {
+      const updatedTodos = [...prevTodos];
 
-    setTodos((prevTodos) => [
-      {
-        id,
+      updatedTodos.unshift({
         title,
         checked: false,
+      });
+
+      return updatedTodos;
+    });
+  }
+
+  function deleteTodoHandler(title: string) {
+    Alert.alert('Deletar', `Deletar a tarefa número ${title}?`, [
+      {
+        text: 'Sim',
+        onPress: () =>
+          setTodos((prevTodos) =>
+            prevTodos.filter((todos) => todos.title !== title)
+          ),
+        style: 'destructive',
       },
-      ...prevTodos,
+      {
+        text: 'Cancelar',
+        style: 'cancel',
+      },
     ]);
   }
 
-  function deleteTodoHandler() {}
-
-  function updateTodoHandler() {} // para quando este dado fosse necessário
+  // function updateTodoHandler() {} // para quando este dado fosse necessário, tipo em API
 
   return (
     <View style={styles.container}>
@@ -54,11 +62,7 @@ export function Todo() {
       </View>
       <View style={styles.mainView}>
         <NewTodo createTodo={createTodoHandler} />
-        <TodoList
-          item={todo}
-          deleteTodo={deleteTodoHandler}
-          updateTodo={updateTodoHandler}
-        />
+        <TodoList item={todo} deleteTodo={deleteTodoHandler} />
       </View>
     </View>
   );
